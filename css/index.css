@@ -1,4 +1,4 @@
-@charset 'utf-8';
+﻿@charset "utf-8";
 
 #wrap {
 	overflow: hidden;
@@ -736,6 +736,9 @@ footer div ul li a { color: #fff; }
 	.imgList {
 		width: 50rem;
 		justify-content: center;
+	}
+	.left_btn, .right_btn {
+		display: none;
 	}
 	.gnb li {
 		padding-left: 2rem;

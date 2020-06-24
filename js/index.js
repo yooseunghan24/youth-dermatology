@@ -13,7 +13,6 @@ const current = document.querySelector('.current_page ul')
 const page = document.querySelector('.page');
 
 let liNum = 0;
-//let wheelEvent;
 function wheelMove () {
 	if(liNum <= 5) {
 		$('.main_con').eq(liNum-1).animate({top: '-100vh'}, 800);
@@ -97,7 +96,6 @@ menuBtn.addEventListener('click', (e) => {
 })
 
 // doctor_intro event
-
 $('.doctor_face').click(function () {
 	if(wWidth < 768) { // moblie
 		$(this).removeClass('non_click');
