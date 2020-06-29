@@ -343,7 +343,7 @@ nav.navOpen { transform: scale(1); opacity: 1; }
 .doctor_box {
 	position: absolute;
 	width: 80%;
-	height: 600px;
+	height: 60%;
 	left: 50%;
 	top: 49%;
 	transform: translate(-50%, -50%);
@@ -365,7 +365,7 @@ nav.navOpen { transform: scale(1); opacity: 1; }
 	transition: .6s;
 }
 .doctor_face.non_click {
-	height: 15%;
+	height: 9%;
 	filter: brightness(50%);
 }
 .doctor_face.tb_non_click { filter: brightness(50%); }
@@ -504,7 +504,7 @@ nav.navOpen { transform: scale(1); opacity: 1; }
 }
 .res_wrap {
 	width: 90%;
-	height: 700px;
+	height: 70%;
 	position: absolute;
 	box-shadow: 0 0 5px 1px #333;
 }
@@ -513,7 +513,7 @@ nav.navOpen { transform: scale(1); opacity: 1; }
 	left: 50%;
 	top: 75%;
 	transform: translate(-50%, -50%);
-	height: 330px;
+	height: 50%;
 	width: 104%;
 	background: #333;
 	box-shadow: 0 0 5px 1px #333;
@@ -561,21 +561,23 @@ nav.navOpen { transform: scale(1); opacity: 1; }
 	width: 100%;
 	font-size: 1.6rem;
 	text-align: center;
+	padding-top: 30px;
 }
 .online_rsv * { color: #333; }
-.online_rsv p:nth-of-type(1) { font-size: 0.8rem; }
 .online_rsv label, .online_rsv input,
 .online_rsv select, .online_rsv p { margin-bottom: 1.6rem; }
 .online_rsv label {
 	display: inline-block;
 	width: 15%;
 	text-align: left;
+	font-size: 12px;
 }
 .online_rsv input {
 	width: 50%;
 	border: 1px solid #333;
 	border-radius: 10px;
 	padding: 0.5rem 0.2rem;
+	font-size: 12px;
 }
 .online_rsv select {
 	width: 50%;
@@ -588,7 +590,7 @@ nav.navOpen { transform: scale(1); opacity: 1; }
 .online_rsv button[type="submit"] {
 	cursor: pointer;
 	display: block;
-	font-size: 2rem;
+	font-size: 1.2rem;
 	border: 3px solid #333;
 	padding: 0.8rem 4rem;
 	margin: auto;

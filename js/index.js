@@ -1,4 +1,4 @@
-// wheel event
+/* wheel event */
 const wHeight = window.innerHeight;
 const wWidth = window.innerWidth;
 const mainCon = document.querySelectorAll('.main_con');
@@ -35,10 +35,10 @@ function wheelEvent(e) {
 	let delta = e.deltaY * 0.01;
 	clearTimeout(wheelEvent);
 	wheelEvent = setTimeout(function () {
-		if(delta > 0) { // mouse wheel down
+		if(delta > 0) { // 마우스 휠 다운
 			if(liNum >= 6) return;
 			liNum += 1;
-			switch(liNum) { // section text animation
+			switch(liNum) { // 섹션 텍스트 애니메이션
 				case 1 : whyYouth.classList.add('ani');
 				break;
 				case 2 : symPo.classList.add('textAni');
@@ -48,7 +48,7 @@ function wheelEvent(e) {
 			}
 			pageNum();
 			wheelMove();
-			} else { // mouse wheel up
+			} else { // 마우스 휠 업
 				if(liNum <= 0) return;
 				liNum -= 1;
 				pageNum();
@@ -61,13 +61,13 @@ function wheelEvent(e) {
 }
 window.addEventListener('wheel', wheelEvent);
 
-// menu_btn click
+/* 메뉴 버튼 클릭 */
 const menuBtn = document.querySelector('.menu_btn');
 const nav = document.querySelector('nav');
 
 let menuSw = 1;
 menuBtn.addEventListener('click', (e) => {
-	if(wWidth < 1024) { // moblie, tablet
+	if(wWidth < 1024) { // 모바일버전
 		if(menuSw===1) {
 			menuBtn.classList.remove('offclick');
 			menuBtn.classList.add('onclick');
@@ -79,7 +79,7 @@ menuBtn.addEventListener('click', (e) => {
 			nav.classList.remove('navOpen');
 			menuSw=1;
 		}
-	} else { // desktop
+	} else { // 데스크탑버전
 		nav.style.opacity = 1;
 		if(menuSw===1) {
 		  menuBtn.classList.remove('offclick');
@@ -95,14 +95,14 @@ menuBtn.addEventListener('click', (e) => {
 	}
 })
 
-// doctor_intro event
+/* doctor_intro 이벤트 */
 $('.doctor_face').click(function () {
-	if(wWidth < 768) { // moblie
+	if(wWidth < 768) { // 스마트폰버전
 		$(this).removeClass('non_click');
 		$(this).siblings('.doctor_info').stop().slideUp();
 		$(this).next().stop().slideDown();
 		$(this).siblings('.doctor_face').addClass('non_click');
-	} else { // tablet
+	} else { // 태블릿버전
 		$(this).removeClass('tb_non_click');
 		$(this).siblings('.doctor_info').hide();
 		$(this).next().css({
@@ -112,7 +112,7 @@ $('.doctor_face').click(function () {
 	}
 });
 
-// hospital_intro event
+/* hospital_intro 이벤트 */
 const imglistImg = document.querySelectorAll('.imgList li img');
 const showImg = document.querySelector('.showImg');
 const imgTxt = document.querySelector('.hospital_intro p:nth-of-type(2)');
@@ -143,7 +143,7 @@ $('.left_btn').click(function () {
 	$('.imgList').animate({marginLeft: 0});
 });
 
-// reservation event
+/* reservation 이벤트 */
 const moveBox = document.querySelector('.moving_box');
 const moveBtn = document.querySelector('.moving_box span');
 let mvSw = 0;
@@ -175,7 +175,7 @@ moveBtn.addEventListener('click', function () {
 	}
 })
 
-// scroll to top
+/* 맨 위로 스크롤 */
 const toTop = document.querySelector('footer div p a');
 toTop.addEventListener('click', function () {
 	liNum = 0;
@@ -189,3 +189,40 @@ toTop.addEventListener('click', function () {
 			line[i].classList.remove('blackOn');
 	}*/
 });
+
+/* 터치 이벤트 */
+let touchStart, touchEnd;
+const html = document.documentElement;
+window.addEventListener('touchstart', function(e) {
+	touchStart = e.touches[0].clientY;
+})
+window.addEventListener('touchmove', function(e) {
+	touchEnd = e.touches[0].clientY;
+})
+window.addEventListener('touchend', function() {
+	if(touchEnd === 0) return;
+	if(touchEnd < touchStart) {
+		if(liNum >= 6) return;
+		liNum += 1;
+		switch(liNum) {
+			case 1 : whyYouth.classList.add('ani');
+			break;
+			case 2 : symPo.classList.add('textAni');
+			break;
+			case 3 : docInt.classList.add('docAni');
+			break;
+		}
+		pageNum();
+		wheelMove();
+	} else {
+		if(liNum <= 0) return;
+		liNum -= 1;
+		pageNum();
+		if(liNum <= 5) {
+			$('.main_con').eq(liNum).animate({top: 0},800);
+			$('footer').animate({bottom:'-150px'},800);
+		}
+	}
+	touchStart = 0;
+	touchEnd = 0;
+})
