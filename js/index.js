@@ -84,12 +84,14 @@ menuBtn.addEventListener('click', (e) => {
 		if(menuSw===1) {
 		  menuBtn.classList.remove('offclick');
 			menuBtn.classList.add('onclick');
-			nav.style.transform = 'translateX(0)';
+			nav.classList.remove('wnavClose');
+			nav.classList.add('wnavOpen');
 			menuSw=0;
 		} else {
 			menuBtn.classList.remove('onclick');
 			menuBtn.classList.add('offclick');
-      nav.style.transform = 'translateX(105%)';
+      nav.classList.remove('wnavOpen');
+			nav.classList.add('wnavClose');
 			menuSw=1;
 		}
 	}
@@ -103,14 +105,14 @@ $('.doctor_face').click(function () {
 		$(this).next().stop().slideDown();
 		$(this).siblings('.doctor_face').addClass('non_click');
 	} else { // 태블릿버전
-		$(this).removeClass('tb_non_click');
-		$(this).siblings('.doctor_info').hide();
-		$(this).next().css({
-			position: 'absolute', top: '35%' ,width: '100%', height: '66.6666%'
-		}).slideDown();
-		$(this).siblings('.doctor_face').addClass('tb_non_click');
+		$('.doctor_face').mouseover(function() {
+			$(this).next().show();
+		}).mouseout(function() {
+			$(this).next().hide();
+		});
 	}
 });
+
 
 /* hospital_intro 이벤트 */
 const imglistImg = document.querySelectorAll('.imgList li img');

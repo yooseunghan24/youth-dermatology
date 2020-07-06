@@ -1,5 +1,7 @@
 ﻿@charset "utf-8";
-
+html, body {
+	touch-action: none; /* 안드로이드 당겨서 새로고침 방지 */
+}
 #wrap {
 	overflow: hidden;
 	width: 100vw;
@@ -30,7 +32,10 @@
 	font-size: 16px;
 }
 .page.pageBlack ul li, .page.pageBlack span { color: #333; }
-section h2 { display: none; }
+section h2 { 
+	height: 0;
+	text-indent: -9999px;	
+}
 header {
 	position: absolute;
 	z-index: 99;
@@ -90,6 +95,7 @@ nav.navOpen { transform: scale(1); opacity: 1; }
 	height: 2px;
 	background: #fff;
 	transition: .7s;
+	overflow: hidden;
 }
 .gnb li a:hover::before { width: 100%; }
 .menu_btn {
@@ -216,59 +222,41 @@ nav.navOpen { transform: scale(1); opacity: 1; }
 }
 /* why_youth */
 .why_youth {
-	background: #e4e4e4;
 	height: 100vh;
 	position: relative;
+	background: #f7f5f4;
 }
 .why_youth img {
 	width: 100%;
 	height: 100%;
-	object-fit: cover;
-	filter: brightness(100%);
 }
-.why_youth p {
-	position: absolute;
-	z-index: 9;
-	width: 100%;
-	text-align: left;
-	padding-left: 3rem;
-	transform: translateY(8rem);
+.why_icon {
+	width: 15%;
+	height: 100%;
+	margin: 0 auto 20px;
+}
+.why_youth > p {
+	text-align: center;
+	font-size: 30px;
+	margin: 15% 0 10%;
+}
+.why_subwrap {
+	padding: 0 20%;
+	text-align: center;
+	margin-bottom: 8%;
+	transform: translateY(100%);
 	opacity: 0;
-	color: #fff;
+	transition: 1s;
 }
-.why_youth p .why_ques {
-	color: #fff;
-	display: inline-block;
-	animation: whyques 1s infinite alternate;
+.why_subwrap h3 {
+	font-size: 22px;
+	margin-bottom: 20px;
 }
-@keyframes whyques {
-	from { transform-origin: 50% 100%; transform: rotate(0);}
-	to { transform-origin: 50% 100%; transform: rotate(10deg);}
+.why_subwrap p {
+	font-size: 14px;
+	line-height: 1.5;
 }
-.why_youth p:nth-of-type(1) {
-	top: 10%;
-	font-size: 3rem;
-	transition: 1.5s;
-}
-.why_youth p:nth-of-type(2) {
-	top: 20%;
-	font-size: 1.4rem;
-	line-height: 1.7;
-	transition: 1s 1s;
-}
-.why_youth p:nth-of-type(3) {
-	top: 30%;
-	font-size: 1.4rem;
-	line-height: 1.7;
-	transition: 1s 2s;
-}
-.why_youth p:nth-of-type(4) {
-	top: 45%;
-	font-size: 1.4rem;
-	line-height: 1.7;
-	transition: 1s 3s;
-}
-.why_youth.ani p {
+.why_youth.ani .why_subwrap {
 	transform: translateY(0);
 	opacity: 1;
 }
@@ -319,7 +307,7 @@ nav.navOpen { transform: scale(1); opacity: 1; }
 .doctor_intro {
 	width: 100vw;
 	height: 100vh;
-	background-image: conic-gradient(at 0% 0%, #006eff, #0a0);
+	background: #1170a4;
 	position: relative;
 }
 .doctor_intro > p {
@@ -561,14 +549,14 @@ nav.navOpen { transform: scale(1); opacity: 1; }
 	width: 100%;
 	font-size: 1.6rem;
 	text-align: center;
-	padding-top: 30px;
+	padding-top: 5%;
+	height: 100%;
 }
 .online_rsv * { color: #333; }
-.online_rsv label, .online_rsv input,
-.online_rsv select, .online_rsv p { margin-bottom: 1.6rem; }
 .online_rsv label {
 	display: inline-block;
 	width: 15%;
+	height: 13%;
 	text-align: left;
 	font-size: 12px;
 }
@@ -595,7 +583,6 @@ nav.navOpen { transform: scale(1); opacity: 1; }
 	padding: 0.8rem 4rem;
 	margin: auto;
 	background: transparent;
-	border-radius: 10px;
 	transition: .3s;
 }
 .online_rsv button[type="submit"]:hover {
@@ -605,13 +592,13 @@ nav.navOpen { transform: scale(1); opacity: 1; }
 footer.main_con {
 	position: fixed;
 	height: 150px;
-	background: skyblue;
+	background: #1e272b;
 	bottom: -150px;
 	width: 100vw;
 }
 footer div {
 	line-height: 1.5;
-	padding: 50px 100px 0 100px;
+	padding: 10% 5% 0;
 	color: #fff;
 	position: relative;
 }
@@ -632,7 +619,10 @@ footer div ul {
 }
 footer div ul li { margin-right: 1rem; }
 footer div ul li a { color: #fff; }
-.main_con { position: fixed; }
+.main_con {
+	position: fixed;
+  width: 100vw;
+}
 .first_area { z-index: 10; }
 .why_youth { z-index: 9; }
 .symposium { z-index: 8; }
@@ -643,6 +633,29 @@ footer div ul li a { color: #fff; }
 /*태블릿*/
 @media (min-width: 768px) {
 	html { font-size: 13px; }
+	.why_subwrap {
+		display: flex;
+		padding: 0 10%;
+		margin-bottom: 5%;
+	}
+	.why_icon {
+		width: 20%;
+		height: 100%;
+	}
+	.why_text {
+		width: 80%;
+		padding: 0 10%;
+	}
+	.why_youth > p {
+		margin: 8% 0;
+		font-size: 34px;
+	}
+	.why_subwrap h3 {
+		font-size: 26px;
+	}
+	.why_subwrap p {
+		font-size: 18px;
+	}
 	.hospital_intro > p:nth-of-type(2) { top: 17%; }
 	.doctor_intro > p:nth-of-type(1) { top: 10%; }
 	.doctor_intro > p:nth-of-type(2) { top: 17%; }
@@ -670,9 +683,11 @@ footer div ul li a { color: #fff; }
 		height: 100%;
 	}
 	.online_rsv { font-size: 1.4rem; }
-	.online_rsv label { width: 100px; }
-	.online_rsv label, .online_rsv input,
-	.online_rsv select, .online_rsv p { margin-bottom: 15px; }
+	.online_rsv label {
+		width: 100px;
+		height: 8%;
+		font-size: 16px;
+	}
 	.online_rsv input { width: 175px; }
 	.online_rsv select {
 		width: 175px;
@@ -696,18 +711,36 @@ footer div ul li a { color: #fff; }
 
 /*데스크탑*/
 @media (min-width: 1024px) {
+	.pc_none {
+		display: none;
+	}
 	html { font-size: 15px; }
 	nav {
-		transform: scale(1) translateX(105%);
+		transform-origin: top right;
+		transform: scale(0) rotate(-90deg);
 		position: fixed;
 		transition: 1s;
 		top: 0;
 		right: 0;
-		width: 20vw;
+		width: 100vw;
 		height: 100vh;
-		background-image: linear-gradient(141deg, #1fc8db 51%, #2cb5e8 75%);
+		background: black;
 		z-index: 999;
-		box-shadow: -2px 0 5px #888;
+	}
+	nav.wnavOpen {
+		animation: wnavOpen 1s forwards;
+	}
+	@keyframes wnavOpen {
+		0% {transform: scale(1) rotate(-90deg)}
+		100% {transform: scale(1) rotate(0);}
+	}
+	nav.wnavClose {
+		animation: wnavClose 1s forwards;
+	}
+	@keyframes wnavClose {
+		0% {transform: scale(1) rotate(0);}
+		99.9% {transform: scale(1) rotate(-90deg);}
+		100% {transform: scale(0) rotate(-90deg);}
 	}
 	.page {
 		right: 60px;
@@ -717,12 +750,29 @@ footer div ul li a { color: #fff; }
 		top: 50%;
 		left: 40%;
 	}
-	.why_youth p { padding-left: 20%;}
-	.why_youth p:nth-of-type(1) { top: 20%; }
-	.why_youth p:nth-of-type(2) { top: 30%; }
-	.why_youth p:nth-of-type(3) { top: 40%; }
-	.why_youth p:nth-of-type(4) { top: 55%; }
-	.why_youth img { filter: brightness(100%); }
+	.why_youth > div {
+		display: flex;
+	}
+	.why_youth > P {
+		font-size: 40px;
+	}
+	.why_icon {
+		width: 204.8px;
+		height: 204.8px;
+		margin-bottom: 40px;
+	}
+	.why_text {
+		width: 100%;
+	}
+	.why_subwrap {
+		display: block;
+		margin: 0;
+		padding: 0;
+		width: 33.333%;
+	}
+	.why_subwrap h3 {
+		margin-bottom: 40px;
+	}
 	.symposium p:nth-of-type(1) {
 		top: 20%;
 		padding-right: 20%;
@@ -742,9 +792,36 @@ footer div ul li a { color: #fff; }
 	.left_btn, .right_btn {
 		display: none;
 	}
+	.gnb {
+		top: 35%;
+		left: 0;
+		transform: translate(0,0);
+		text-align: center;
+	}
 	.gnb li {
-		padding-left: 2rem;
+		padding-left: 0;
 		font-size: 2rem;
+	}
+	.doctor_box {
+		height: 80%;
+		top: 50%;
+	}
+	.doctor_face {
+		height: 100%;
+	}
+	.doctor_info {
+		width: 33.333%;
+		position: absolute;
+		pointer-events: none;
+		height: 100%;
+		background: rgba(0,0,0,0.5);
+		padding: 30px 30px 0;
+	}
+	.info_2 {
+		left: 33.333%;
+	}
+	.info_3 {
+		left: 66.666%;
 	}
 	.reservation > p {
 		position: absolute;
@@ -760,6 +837,10 @@ footer div ul li a { color: #fff; }
 		width: 1024px;
 		margin: auto;
 	}
+	.online_rsv label, .online_rsv input,
+	.online_rsv select, .online_rsv p {
+    margin-bottom: 25px;
+  }
 	.tel_wrap, .form_wrap { width: 50%; }
 	footer div { padding: 20px 100px; line-height: 1; }
 	footer div ul { padding-bottom: 0.5rem; }
